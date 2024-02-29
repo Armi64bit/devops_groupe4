@@ -130,7 +130,8 @@ class ProductServiceImplTest {
     void retrieveProductStock() {
         // Given
         StockRepository stockRepository = mock(StockRepository.class);
-        ProductServiceImpl productService = new ProductServiceImpl(null, stockRepository);
+        ProductRepository productRepository = mock(ProductRepository.class);
+        ProductServiceImpl productService = new ProductServiceImpl(productRepository, stockRepository);
 
         // Create a mock Stock object
         Stock mockStock = new Stock();
@@ -139,15 +140,25 @@ class ProductServiceImplTest {
         // Set up the behavior of the stockRepository mock to return the mockStock object
         when(stockRepository.findById(anyLong())).thenReturn(Optional.of(mockStock));
 
+        // Create a mock list of products
+        List<Product> mockProducts = new ArrayList<>();
+        mockProducts.add(new Product());
+        mockProducts.add(new Product());
+        // Set up the behavior of the productRepository mock to return the mockProducts list
+        when(productRepository.findByStockIdStock(anyLong())).thenReturn(mockProducts);
+
         // When
-        Stock retrievedStock = productService.stockRepository.getReferenceById(1L);
+        List<Product> retrievedProducts = productService.retreiveProductStock(1L);
 
         // Then
-        assertNotNull(retrievedStock);
-        assertEquals(mockStock.getIdStock(), retrievedStock.getIdStock());
+        assertNotNull(retrievedProducts);
+        assertFalse(retrievedProducts.isEmpty());
+        assertEquals(mockProducts.size(), retrievedProducts.size());
+        assertEquals(mockProducts.get(0), retrievedProducts.get(0));
+        assertEquals(mockProducts.get(1), retrievedProducts.get(1));
 
-        // Verify that findById method of StockRepository is called with correct argument
-        verify(stockRepository).findById(1L);
+        // Verify that findByStockIdStock method of ProductRepository is called with correct argument
+        verify(productRepository).findByStockIdStock(1L);
     }
 
 }
