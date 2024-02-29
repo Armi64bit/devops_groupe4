@@ -2,6 +2,7 @@ package tn.esprit.devops_project.services;
 
 import org.junit.jupiter.api.Test;
 import tn.esprit.devops_project.entities.Product;
+import tn.esprit.devops_project.entities.ProductCategory;
 import tn.esprit.devops_project.entities.Stock;
 import tn.esprit.devops_project.repositories.ProductRepository;
 import tn.esprit.devops_project.repositories.StockRepository;
@@ -18,7 +19,8 @@ class ProductServiceImplTest {
 
         ProductRepository productRepository = mock(ProductRepository.class);
         ProductServiceImpl productService = new ProductServiceImpl(productRepository,stockRepository);
-        Product productToAdd = new Product("123", "Test Product", "Test Category", 10, 100);
+        Product productToAdd = new Product();
+        productToAdd.setTitle("test");
         Stock stock=new Stock(1);
         // When
         productService.addProduct(productToAdd,stock.getIdStock());

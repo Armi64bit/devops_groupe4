@@ -23,19 +23,12 @@ public class Product implements Serializable {
     @Enumerated(EnumType.STRING)
     ProductCategory category;
 
-    public Product(Long idProduct, String title, float price, int quantity, ProductCategory category, Stock stock) {
-        this.idProduct = idProduct;
-        this.title = title;
-        this.price = price;
-        this.quantity = quantity;
-        this.category = category;
-        this.stock = stock;
-    }
+
 
     @ManyToOne
     @JsonIgnore
     Stock stock;
 
-    public Product(String number, String testProduct, String testCategory, int i, int i1) {
-    }
+
+
 }
