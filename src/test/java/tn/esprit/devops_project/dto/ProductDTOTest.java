@@ -6,34 +6,49 @@ import tn.esprit.devops_project.entities.ProductCategory;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductDTOTest {
-
     @Test
-    void testConstructorAndGettersAndSetters() {
-        Long id = 1L;
+    void testSetters() {
+        // Given
+        ProductDTO productDTO = new ProductDTO();
+
+        // When
+        Long idProduct = 1L;
         String title = "Test Product";
-        float price = 10.99f;
+        float price = 10.0f;
         int quantity = 5;
         ProductCategory category = ProductCategory.ELECTRONICS;
 
-        ProductDTO productDTO = new ProductDTO(id, title, price, quantity, category);
+        productDTO.setIdProduct(idProduct);
+        productDTO.setTitle(title);
+        productDTO.setPrice(price);
+        productDTO.setQuantity(quantity);
+        productDTO.setCategory(category);
 
-        assertEquals(id, productDTO.getIdProduct());
+        // Then
+        assertEquals(idProduct, productDTO.getIdProduct());
         assertEquals(title, productDTO.getTitle());
         assertEquals(price, productDTO.getPrice());
         assertEquals(quantity, productDTO.getQuantity());
         assertEquals(category, productDTO.getCategory());
+    }
+    @Test
+    void testConstructorAndGetters() {
+        // Given
+        Long idProduct = 1L;
+        String title = "Test Product";
+        float price = 10.0f;
+        int quantity = 5;
+        ProductCategory category = ProductCategory.ELECTRONICS;
 
-        productDTO.setIdProduct(2L);
-        productDTO.setTitle("Updated Title");
-        productDTO.setPrice(12.99f);
-        productDTO.setQuantity(10);
-        productDTO.setCategory(ProductCategory.BOOKS);
+        // When
+        ProductDTO productDTO = new ProductDTO(idProduct, title, price, quantity, category);
 
-        assertEquals(2L, productDTO.getIdProduct());
-        assertEquals("Updated Title", productDTO.getTitle());
-        assertEquals(12.99f, productDTO.getPrice());
-        assertEquals(10, productDTO.getQuantity());
-        assertEquals(ProductCategory.BOOKS, productDTO.getCategory());
+        // Then
+        assertEquals(idProduct, productDTO.getIdProduct());
+        assertEquals(title, productDTO.getTitle());
+        assertEquals(price, productDTO.getPrice());
+        assertEquals(quantity, productDTO.getQuantity());
+        assertEquals(category, productDTO.getCategory());
     }
 
     // Additional test cases (optional)
@@ -73,8 +88,25 @@ class ProductDTOTest {
 
     @Test
     void testToString() {
-        ProductDTO productDTO = new ProductDTO(4L, "Test Product", 19.99f, 25, ProductCategory.CLOTHING);
-        String expected = "ProductDTO{idProduct=4, title='Test Product', price=19.99, quantity=25, category=CLOTHING}";
-        assertEquals(expected, productDTO.toString());
+        // Given
+        Long idProduct = 1L;
+        String title = "Test Product";
+        float price = 10.0f;
+        int quantity = 5;
+        ProductCategory category = ProductCategory.ELECTRONICS;
+
+        ProductDTO productDTO = new ProductDTO(idProduct, title, price, quantity, category);
+
+        // When
+        String expectedToString = "ProductDTO{" +
+                "idProduct=" + idProduct +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", category=" + category +
+                '}';
+
+        // Then
+        assertEquals(expectedToString, productDTO.toString());
     }
 }
