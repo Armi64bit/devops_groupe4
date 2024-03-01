@@ -9,11 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="DevOps_Project (1)" />
         <module name="DevOps_Project (2)" />
+        <module name="DevOps_Project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="DevOps_Project" target="11" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
