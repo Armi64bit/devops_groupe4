@@ -30,22 +30,7 @@ class StockTest {
         assertEquals(title, stock.getTitle());
     }
 
-    @Test
-    void getProducts() {
-        // Given
-        Product product1 = new Product();
-        Product product2 = new Product();
 
-        Set<Product> products = new HashSet<>();
-        products.add(product1);
-        products.add(product2);
-
-        Stock stock = new Stock();
-        stock.setProducts(products);
-
-        // Then
-        assertEquals(products, stock.getProducts());
-    }
 
     @Test
     void setIdStock() {
@@ -71,6 +56,23 @@ class StockTest {
 
         // Then
         assertEquals(title, stock.getTitle());
+    }
+
+    @Test
+    void getProducts() {
+        // Given
+        Product product1 = new Product();
+        Product product2 = new Product();
+
+        Set<Product> products = new HashSet<>();
+        products.add(product1);
+        products.add(product2);
+
+        Stock stock = new Stock();
+        stock.setProducts(products);
+
+        // Then
+        assertEquals(products, stock.getProducts());
     }
 
     @Test
