@@ -105,7 +105,14 @@ class ProductDTOTest {
 
         // Test for inequality between productDTO1 and productDTO3
         assertFalse(productDTO1.equals(productDTO3));
+
+        // Test for null comparison
+        assertFalse(productDTO1.equals(null));
+
+        // Test for comparison with a different class
+        assertFalse(productDTO1.equals("Test"));
     }
+
 
     @Test
     void testHashCode() {
