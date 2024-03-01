@@ -40,21 +40,41 @@ class ProductDTOTest {
 
     @Test
     void testNoArgsConstructor() {
-        // Test default values or behavior of the no-argument constructor
+        ProductDTO productDTO = new ProductDTO();
+
+        // Assert default values (replace with actual defaults if different)
+        assertNull(productDTO.getIdProduct());
+        assertNull(productDTO.getTitle());
+        assertEquals(0.0f, productDTO.getPrice());
+        assertEquals(0, productDTO.getQuantity());
+        assertNull(productDTO.getCategory());
     }
 
     @Test
     void testEquals() {
-        // Test object equality with different scenarios
-    }
+        ProductDTO product1 = new ProductDTO(1L, "Product 1", 12.50f, 10, ProductCategory.ELECTRONICS);
+        ProductDTO product2 = new ProductDTO(1L, "Product 1", 12.50f, 10, ProductCategory.ELECTRONICS);
+        ProductDTO product3 = new ProductDTO(2L, "Product 2", 9.99f, 5, ProductCategory.BOOKS);
 
+        assertEquals(product1, product2);
+        assertNotEquals(product1, product3);
+        assertNotEquals(product1, null);
+        assertNotEquals(product1, new Object());
+    }
     @Test
     void testHashCode() {
-        // Test hashCode method behavior
+        ProductDTO product1 = new ProductDTO(1L, "Product 1", 12.50f, 10, ProductCategory.ELECTRONICS);
+        ProductDTO product2 = new ProductDTO(1L, "Product 1", 12.50f, 10, ProductCategory.ELECTRONICS);
+        ProductDTO product3 = new ProductDTO(2L, "Product 2", 9.99f, 5, ProductCategory.BOOKS);
+
+        assertEquals(product1.hashCode(), product2.hashCode());
+        assertNotEquals(product1.hashCode(), product3.hashCode());
     }
 
     @Test
     void testToString() {
-        // Test the output of the toString() method
+        ProductDTO productDTO = new ProductDTO(4L, "Test Product", 19.99f, 25, ProductCategory.CLOTHING);
+        String expected = "ProductDTO{idProduct=4, title='Test Product', price=19.99, quantity=25, category=CLOTHING}";
+        assertEquals(expected, productDTO.toString());
     }
 }
