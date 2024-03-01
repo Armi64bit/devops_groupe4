@@ -93,11 +93,17 @@ class ProductDTOTest {
 
     @Test
     void testEquals() {
+        // Create two ProductDTO objects with the same attributes
         ProductDTO productDTO1 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
         ProductDTO productDTO2 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
+
+        // Create a ProductDTO object with different attributes
         ProductDTO productDTO3 = new ProductDTO(2L, "Test Product 2", 20.0f, 10, ProductCategory.CLOTHING);
 
+        // Test for equality between productDTO1 and productDTO2
         assertTrue(productDTO1.equals(productDTO2));
+
+        // Test for inequality between productDTO1 and productDTO3
         assertFalse(productDTO1.equals(productDTO3));
     }
 
