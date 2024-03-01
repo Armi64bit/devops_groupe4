@@ -107,15 +107,36 @@ class ProductDTOTest {
         assertNotEquals(productDTO1, productDTO3);
 
         // Test for null comparison
-        assertNotEquals(productDTO1, null);
+        assertFalse(productDTO1.equals(null));
 
         // Test for comparison with a different class
-        assertNotEquals(productDTO1, "Test");
+        assertFalse(productDTO1.equals("Test"));
 
-        // Test for comparison with a different category
-        ProductDTO productDTO4 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
-        ProductDTO productDTO5 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.CLOTHING);
-        assertNotEquals(productDTO4, productDTO5);
+        // Test for comparison with itself
+        assertEquals(productDTO1, productDTO1);
+
+        // Test for comparison with an object of a different class
+        assertNotEquals(productDTO1, new Object());
+
+        // Test for comparison with different idProduct
+        ProductDTO productDTO4 = new ProductDTO(2L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO4);
+
+        // Test for comparison with different title
+        ProductDTO productDTO5 = new ProductDTO(1L, "Different Title", 10.5f, 5, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO5);
+
+        // Test for comparison with different price
+        ProductDTO productDTO6 = new ProductDTO(1L, "Test Product", 20.0f, 5, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO6);
+
+        // Test for comparison with different quantity
+        ProductDTO productDTO7 = new ProductDTO(1L, "Test Product", 10.5f, 10, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO7);
+
+        // Test for comparison with different category
+        ProductDTO productDTO8 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.CLOTHING);
+        assertNotEquals(productDTO1, productDTO8);
     }
 
 
