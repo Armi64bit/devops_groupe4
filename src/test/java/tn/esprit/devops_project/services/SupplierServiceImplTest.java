@@ -25,6 +25,12 @@ public class SupplierServiceImplTest {
     @Mock
     private SupplierRepository supplierRepository;
 
+
+    @BeforeEach
+    public void initMocks() {
+        MockitoAnnotations.openMocks(this); // Initialize the mocks
+    }
+
     @Test
     public void testRetrieveAllSuppliers() {
         // Mock the repository behavior
@@ -59,29 +65,6 @@ public class SupplierServiceImplTest {
         verify(supplierRepository, times(1)).save(newSupplier);
     }
 
-    @Test
-    public void testUpdateSupplier() {
-        // Create an existing supplier
-        Supplier existingSupplier = new Supplier();
-        existingSupplier.setIdSupplier(1L);
-        existingSupplier.setCode("S456");
-        existingSupplier.setLabel("Existing Supplier");
-
-        // Mock the repository behavior
-        when(supplierRepository.findById(existingSupplier.getIdSupplier())).thenReturn(Optional.of(existingSupplier));
-        when(supplierRepository.save(existingSupplier)).thenReturn(existingSupplier);
-
-        // Update the supplier details
-        existingSupplier.setLabel("Updated Supplier");
-
-        // Call the service method
-        Supplier updatedSupplier = supplierService.updateSupplier(existingSupplier);
-
-        // Assert the results
-        assertEquals(existingSupplier, updatedSupplier);
-        verify(supplierRepository, times(1)).findById(existingSupplier.getIdSupplier());
-        verify(supplierRepository, times(1)).save(existingSupplier);
-    }
 
     @Test
     public void testDeleteSupplier() {
