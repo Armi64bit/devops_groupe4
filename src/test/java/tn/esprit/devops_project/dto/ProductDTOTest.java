@@ -115,12 +115,12 @@ class ProductDTOTest {
         // Test for comparison with different title
         ProductDTO productDTO4 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
         ProductDTO productDTO5 = new ProductDTO(1L, "Different Product", 10.5f, 5, ProductCategory.ELECTRONICS);
-        assertFalse(productDTO4.equals(productDTO5));
+        assertNotEquals(productDTO4, productDTO5);
 
         // Test for comparison with different category
         ProductDTO productDTO6 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
         ProductDTO productDTO7 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.CLOTHING);
-        assertFalse(productDTO6.equals(productDTO7));
+        assertNotEquals(productDTO6, productDTO7);
     }
 
 
