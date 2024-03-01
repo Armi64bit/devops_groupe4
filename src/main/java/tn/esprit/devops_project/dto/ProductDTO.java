@@ -65,4 +65,14 @@ public class ProductDTO {
     public void setCategory(ProductCategory category) {
         this.category = category;
     }
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "idProduct=" + idProduct +
+                ", title='" + title + '\'' + // Use single quotes here
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", category=" + category +
+                '}';
+    }
 }
