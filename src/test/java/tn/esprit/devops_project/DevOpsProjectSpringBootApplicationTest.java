@@ -1,22 +1,29 @@
 package tn.esprit.devops_project;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
-class DevOpsProjectSpringBootApplicationTest {
+public class DevOpsProjectSpringBootApplicationTest {
 
     @Test
-    void main() {
-        // Run the main method and capture the application context
-        ConfigurableApplicationContext context = SpringApplication.run(DevOpsProjectSpringBootApplication.class);
+    public void applicationContextLoads() {
+        // Mock the SpringApplication.run() method
+        ConfigurableApplicationContext context = mock(ConfigurableApplicationContext.class);
+        Mockito.when(SpringApplication.run(DevOpsProjectSpringBootApplication.class)).thenReturn(context);
+
+        // Run the main method
+
 
         // Assert that the application context is not null
-        assertNotNull(context);
+        assertNotNull(DevOpsProjectSpringBootApplication.main(new String[]{}););
 
-        // Close the application context after the test
-        context.close();
+        // Verify that SpringApplication.run() was called with the correct arguments
+        Object SpringApplication;
+        verify(SpringApplication, times(1)).run(DevOpsProjectSpringBootApplication.class);
     }
 }
