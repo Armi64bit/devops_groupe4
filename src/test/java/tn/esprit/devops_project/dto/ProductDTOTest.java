@@ -58,7 +58,7 @@ class ProductDTOTest {
 
         assertEquals(product1, product2);
         assertNotEquals(product1, product3);
-        assertNotEquals(product1, null);
+        assertNotEquals(null,product1);
         assertNotEquals(product1, new Object());
     }
     @Test
