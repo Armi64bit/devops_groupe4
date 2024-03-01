@@ -19,7 +19,6 @@ class ApplicationStarter {
     public ApplicationStarter(SpringApplication springApplication) {
         this.springApplication = springApplication;
     }
-
     public void startApplication(String[] args) {
         springApplication.run(DevOpsProjectSpringBootApplication.class, args);
     }

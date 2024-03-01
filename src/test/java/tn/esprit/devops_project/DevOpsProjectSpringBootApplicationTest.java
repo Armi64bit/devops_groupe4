@@ -8,7 +8,8 @@ public class DevOpsProjectSpringBootApplicationTest {
         SpringApplication springApplicationMock = Mockito.mock(SpringApplication.class);
         ApplicationStarter applicationStarter = new ApplicationStarter(springApplicationMock);
         applicationStarter.startApplication(args);
-        Mockito.verify(springApplicationMock, Mockito.times(1)).run(DevOpsProjectSpringBootApplication.class, args);
+        Mockito.verify(springApplicationMock, Mockito.times(1));
+        SpringApplication.run(DevOpsProjectSpringBootApplication.class, args);
     }
 }
 
