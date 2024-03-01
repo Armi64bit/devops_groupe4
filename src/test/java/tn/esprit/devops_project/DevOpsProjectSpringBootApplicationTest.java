@@ -1,11 +1,15 @@
 package tn.esprit.devops_project;
+import org.mockito.Mockito;
+import org.springframework.boot.SpringApplication;
 
-import org.junit.jupiter.api.Test;
+public class DevOpsProjectSpringBootApplicationTest {
 
-import static org.junit.jupiter.api.Assertions.*;
-class DevOpsProjectSpringBootApplicationTest {
-
-    @Test
-    void main() {
+    public static void main(String[] args) {
+        SpringApplication springApplicationMock = Mockito.mock(SpringApplication.class);
+        ApplicationStarter applicationStarter = new ApplicationStarter(springApplicationMock);
+        applicationStarter.startApplication(args);
+        Mockito.verify(springApplicationMock, Mockito.times(1)).run(DevOpsProjectSpringBootApplication.class, args);
     }
 }
+
+
