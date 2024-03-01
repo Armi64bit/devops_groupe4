@@ -3,6 +3,8 @@ package tn.esprit.devops_project.dto;
 import lombok.Data;
 import tn.esprit.devops_project.entities.ProductCategory;
 
+import java.util.Objects;
+
 @Data
 public class ProductDTO {
     private Long idProduct;
@@ -74,5 +76,21 @@ public class ProductDTO {
                 ", quantity=" + quantity +
                 ", category=" + category +
                 '}';
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductDTO that = (ProductDTO) o;
+        return Float.compare(that.price, price) == 0 &&
+                quantity == that.quantity &&
+                Objects.equals(idProduct, that.idProduct) &&
+                Objects.equals(title, that.title) &&
+                category == that.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProduct, title, price, quantity, category);
     }
 }
