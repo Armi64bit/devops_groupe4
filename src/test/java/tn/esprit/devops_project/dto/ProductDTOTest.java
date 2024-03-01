@@ -137,7 +137,20 @@ class ProductDTOTest {
         // Test for comparison with different category
         ProductDTO productDTO8 = new ProductDTO(1L, "Test Product", 10.5f, 5, ProductCategory.CLOTHING);
         assertNotEquals(productDTO1, productDTO8);
+
+        // Test for comparison with null idProduct
+        ProductDTO productDTO9 = new ProductDTO(null, "Test Product", 10.5f, 5, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO9);
+
+        // Test for comparison with null title
+        ProductDTO productDTO10 = new ProductDTO(1L, null, 10.5f, 5, ProductCategory.ELECTRONICS);
+        assertNotEquals(productDTO1, productDTO10);
+
+        // Test for comparison with null category
+        ProductDTO productDTO11 = new ProductDTO(1L, "Test Product", 10.5f, 5, null);
+        assertNotEquals(productDTO1, productDTO11);
     }
+
 
 
 
