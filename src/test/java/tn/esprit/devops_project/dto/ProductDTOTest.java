@@ -3,6 +3,8 @@ package tn.esprit.devops_project.dto;
 import org.junit.jupiter.api.Test;
 import tn.esprit.devops_project.entities.ProductCategory;
 
+import javax.validation.constraints.Null;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductDTOTest {
@@ -107,10 +109,10 @@ class ProductDTOTest {
         assertNotEquals(productDTO1, productDTO3);
 
         // Test for null comparison
-        assertFalse(productDTO1.equals(null));
+        assertNotEquals(null,productDTO1);
 
         // Test for comparison with a different class
-        assertFalse(productDTO1.equals("Test"));
+        assertNotEquals("Test",productDTO1);
 
         // Test for comparison with itself
         assertEquals(productDTO1, productDTO1);
