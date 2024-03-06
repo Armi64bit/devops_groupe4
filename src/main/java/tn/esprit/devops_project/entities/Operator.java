@@ -1,6 +1,7 @@
 package tn.esprit.devops_project.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Operator implements Serializable{
+public class Operator implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,5 +33,11 @@ public class Operator implements Serializable{
 	@OneToMany
 	@JsonIgnore
 	Set<Invoice> invoices;
-	
+
+	// Method to initialize invoices set if null
+	public void initializeInvoices() {
+		if (invoices == null) {
+			invoices = new HashSet<>();
+		}
+	}
 }
