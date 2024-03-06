@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class InvoiceTest {
@@ -27,6 +26,43 @@ class InvoiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    void testDefaultConstructor() {
+        Invoice invoice = new Invoice();
+        assertNotNull(invoice);
+    }
+
+    @Test
+    void testAllArgsConstructor() {
+        Long id = 1L;
+        float amountDiscount = 50.0f;
+        float amountInvoice = 100.0f;
+        Date dateCreationInvoice = new Date();
+        Date dateLastModificationInvoice = new Date();
+        Boolean archived = true;
+        Set<InvoiceDetail> invoiceDetails = new HashSet<>();
+        Supplier supplier = new Supplier();
+
+        Invoice invoice = new Invoice(id, amountDiscount, amountInvoice, dateCreationInvoice,
+                dateLastModificationInvoice, archived, invoiceDetails, supplier);
+
+        assertEquals(id, invoice.getIdInvoice());
+        assertEquals(amountDiscount, invoice.getAmountDiscount(), 0.01);
+        assertEquals(amountInvoice, invoice.getAmountInvoice(), 0.01);
+        assertEquals(dateCreationInvoice, invoice.getDateCreationInvoice());
+        assertEquals(dateLastModificationInvoice, invoice.getDateLastModificationInvoice());
+        assertEquals(archived, invoice.getArchived());
+        assertEquals(invoiceDetails, invoice.getInvoiceDetails());
+        assertEquals(supplier, invoice.getSupplier());
+    }
+
+    @Test
+    void testConstructorWithId() {
+        long id = 1L;
+        Invoice invoice = new Invoice(id);
+        assertEquals(id, invoice.getIdInvoice());
     }
 
     @Test
