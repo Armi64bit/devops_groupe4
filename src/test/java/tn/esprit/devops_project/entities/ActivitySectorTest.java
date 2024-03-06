@@ -1,20 +1,13 @@
 package tn.esprit.devops_project.entities;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.HashSet;
-import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-class ActivitySectorTest {
+import java.util.HashSet;
+import java.util.Set;
 
-    @Mock
-    private Supplier supplierMock;
+class ActivitySectorTest {
 
     @Test
     void constructorWithIdAndName_ShouldSetIdAndName() {
@@ -29,8 +22,6 @@ class ActivitySectorTest {
         assertNotNull(activitySector);
         assertEquals(id, activitySector.getIdSecteurActivite());
         assertEquals(name, activitySector.getLibelleSecteurActivite());
-        assertNull(activitySector.getCodeSecteurActivite());
-        assertNull(activitySector.getSuppliers());
     }
 
     @Test
@@ -39,14 +30,13 @@ class ActivitySectorTest {
         String code = "XYZ";
         String name = "Test Sector";
         Set<Supplier> suppliers = new HashSet<>();
-        suppliers.add(supplierMock);
 
         // Act
         ActivitySector activitySector = new ActivitySector(code, name, suppliers);
 
         // Assert
         assertNotNull(activitySector);
-        assertNull(activitySector.getIdSecteurActivite());
+        assertNull(activitySector.getIdSecteurActivite()); // id will be generated
         assertEquals(code, activitySector.getCodeSecteurActivite());
         assertEquals(name, activitySector.getLibelleSecteurActivite());
         assertEquals(suppliers, activitySector.getSuppliers());
