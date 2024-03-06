@@ -28,4 +28,17 @@ public class ActivitySector  implements Serializable {
         @JsonIgnore
         private Set<Supplier> suppliers;
 
+
+        // Constructor with id and name
+        public ActivitySector(Long idSecteurActivite, String libelleSecteurActivite) {
+                this.idSecteurActivite = idSecteurActivite;
+                this.libelleSecteurActivite = libelleSecteurActivite;
+        }
+
+        // Constructor with all fields except id
+        public ActivitySector(String codeSecteurActivite, String libelleSecteurActivite, Set<Supplier> suppliers) {
+                this.codeSecteurActivite = codeSecteurActivite;
+                this.libelleSecteurActivite = libelleSecteurActivite;
+                this.suppliers = suppliers;
+        }
 }
