@@ -2,51 +2,38 @@ package tn.esprit.devops_project.entities;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OperatorTest {
 
     @Test
-    void initializeInvoices() {
+    void initializeInvoices_WhenInvoicesIsNull_ShouldInitializeInvoices() {
+        // Arrange
+        Operator operator = new Operator();
+        assertNull(operator.getInvoices());
+
+        // Act
+        operator.initializeInvoices();
+
+        // Assert
+        assertNotNull(operator.getInvoices());
     }
 
     @Test
-    void getIdOperateur() {
-    }
+    void initializeInvoices_WhenInvoicesIsNotNull_ShouldNotModifyInvoices() {
+        // Arrange
+        Set<Invoice> invoices = new HashSet<>();
+        invoices.add(new Invoice());
+        Operator operator = new Operator();
+        operator.setInvoices(invoices);
 
-    @Test
-    void getFname() {
-    }
+        // Act
+        operator.initializeInvoices();
 
-    @Test
-    void getLname() {
-    }
-
-    @Test
-    void getPassword() {
-    }
-
-    @Test
-    void getInvoices() {
-    }
-
-    @Test
-    void setIdOperateur() {
-    }
-
-    @Test
-    void setFname() {
-    }
-
-    @Test
-    void setLname() {
-    }
-
-    @Test
-    void setPassword() {
-    }
-
-    @Test
-    void setInvoices() {
+        // Assert
+        assertEquals(invoices, operator.getInvoices());
     }
 }
