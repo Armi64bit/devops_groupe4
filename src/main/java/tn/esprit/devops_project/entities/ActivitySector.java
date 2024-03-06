@@ -41,4 +41,6 @@ public class ActivitySector  implements Serializable {
                 this.libelleSecteurActivite = libelleSecteurActivite;
                 this.suppliers = suppliers;
         }
+
+
 }

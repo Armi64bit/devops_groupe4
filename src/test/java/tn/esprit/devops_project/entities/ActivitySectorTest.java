@@ -1,5 +1,4 @@
 package tn.esprit.devops_project.entities;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -22,6 +21,8 @@ class ActivitySectorTest {
         assertNotNull(activitySector);
         assertEquals(id, activitySector.getIdSecteurActivite());
         assertEquals(name, activitySector.getLibelleSecteurActivite());
+        assertNull(activitySector.getCodeSecteurActivite()); // Ensure code is not set
+        assertNull(activitySector.getSuppliers()); // Ensure suppliers is not set
     }
 
     @Test
