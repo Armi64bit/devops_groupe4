@@ -26,8 +26,6 @@ class InvoiceServiceImplTest {
     @Mock
     OperatorRepository operatorRepository;
 
-    @Mock
-    InvoiceDetailRepository invoiceDetailRepository;
 
     @Mock
     SupplierRepository supplierRepository;
@@ -38,8 +36,9 @@ class InvoiceServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
+
 
     @Test
     void retrieveAllInvoices() {
@@ -86,26 +85,19 @@ class InvoiceServiceImplTest {
         assertEquals(expectedInvoice, actualInvoice);
     }
 
-//    @Test
-//    void getInvoicesBySupplier() {
-//        // Arrange
-//        Long supplierId = 1L;
-//        Supplier supplier = new Supplier();
-//        supplier.setIdSupplier(supplierId);
-//        Set<Invoice> expectedInvoices = new HashSet<>();
-//        expectedInvoices.add(new Invoice());
-//        expectedInvoices.add(new Invoice());
-//
-//        when(supplierRepository.findById(supplierId)).thenReturn(Optional.of(supplier));
-//        when(supplier.getInvoices()).thenReturn(expectedInvoices);
-//
-//        // Act
-//        List<Invoice> actualInvoices = invoiceService.getInvoicesBySupplier(supplierId);
-//
-//        // Assert
-//        assertEquals(expectedInvoices.size(), actualInvoices.size());
-//        assertTrue(actualInvoices.containsAll(expectedInvoices));
-//    }
+    @Test
+    void testGetInvoicesBySupplier() {
+        Long idSupplier = 1L;
+        Supplier supplier = new Supplier();
+        Set<Invoice> invoices = new HashSet<>();
+        invoices.add(new Invoice());
+        supplier.setInvoices(invoices);
+        when(supplierRepository.findById(idSupplier)).thenReturn(java.util.Optional.of(supplier));
+
+        List<Invoice> result = invoiceService.getInvoicesBySupplier(idSupplier);
+
+        assertEquals(invoices.size(), result.size());
+    }
 
     @Test
     void assignOperatorToInvoice() {
