@@ -1,5 +1,4 @@
 package tn.esprit.devops_project.services;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -12,7 +11,7 @@ import tn.esprit.devops_project.repositories.InvoiceDetailRepository;
 import tn.esprit.devops_project.repositories.InvoiceRepository;
 import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.repositories.SupplierRepository;
-import tn.esprit.devops_project.services.Iservices.IInvoiceService;
+import tn.esprit.devops_project.services.InvoiceServiceImpl;
 
 import java.util.*;
 
@@ -41,6 +40,7 @@ class InvoiceServiceImplTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+
     @Test
     void retrieveAllInvoices() {
         // Arrange
