@@ -21,8 +21,6 @@ class ActivitySectorTest {
         assertNotNull(activitySector);
         assertEquals(id, activitySector.getIdSecteurActivite());
         assertEquals(name, activitySector.getLibelleSecteurActivite());
-        assertNull(activitySector.getCodeSecteurActivite()); // Ensure code is not set
-        assertNull(activitySector.getSuppliers()); // Ensure suppliers is not set
     }
 
     @Test
@@ -41,5 +39,19 @@ class ActivitySectorTest {
         assertEquals(code, activitySector.getCodeSecteurActivite());
         assertEquals(name, activitySector.getLibelleSecteurActivite());
         assertEquals(suppliers, activitySector.getSuppliers());
+    }
+
+    @Test
+    void constructorWithIdAndName_ShouldNotSetCodeAndSuppliers() {
+        // Arrange
+        Long id = 1L;
+        String name = "Test Sector";
+
+        // Act
+        ActivitySector activitySector = new ActivitySector(id, name);
+
+        // Assert
+        assertNull(activitySector.getCodeSecteurActivite());
+        assertNull(activitySector.getSuppliers());
     }
 }
