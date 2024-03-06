@@ -1,40 +1,33 @@
 package tn.esprit.devops_project.entities;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 class ActivitySectorTest {
-
     @Test
     void getIdSecteurActivite() {
+        // Arrange
+        ActivitySector activitySector = new ActivitySector();
+        activitySector.setIdSecteurActivite(1L);
+
+        // Act
+        Long id = activitySector.getIdSecteurActivite();
+
+        // Assert
+        assertNotNull(id);
+        assertEquals(1L, id);
     }
 
     @Test
     void getCodeSecteurActivite() {
-    }
+        // Arrange
+        ActivitySector activitySector = new ActivitySector();
+        activitySector.setCodeSecteurActivite("ABC");
 
-    @Test
-    void getLibelleSecteurActivite() {
-    }
+        // Act
+        String code = activitySector.getCodeSecteurActivite();
 
-    @Test
-    void getSuppliers() {
-    }
-
-    @Test
-    void setIdSecteurActivite() {
-    }
-
-    @Test
-    void setCodeSecteurActivite() {
-    }
-
-    @Test
-    void setLibelleSecteurActivite() {
-    }
-
-    @Test
-    void setSuppliers() {
+        // Assert
+        assertNotNull(code);
+        assertEquals("ABC", code);
     }
 }
