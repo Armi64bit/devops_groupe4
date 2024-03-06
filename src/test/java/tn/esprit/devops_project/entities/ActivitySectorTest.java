@@ -1,11 +1,20 @@
 package tn.esprit.devops_project.entities;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashSet;
 import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class ActivitySectorTest {
+
+    @Mock
+    private Supplier supplierMock;
 
     @Test
     void constructorWithIdAndName_ShouldSetIdAndName() {
@@ -30,6 +39,7 @@ class ActivitySectorTest {
         String code = "XYZ";
         String name = "Test Sector";
         Set<Supplier> suppliers = new HashSet<>();
+        suppliers.add(supplierMock);
 
         // Act
         ActivitySector activitySector = new ActivitySector(code, name, suppliers);
