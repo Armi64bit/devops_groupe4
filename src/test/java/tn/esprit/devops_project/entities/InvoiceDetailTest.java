@@ -6,7 +6,37 @@ import tn.esprit.devops_project.entities.Invoice;
 import tn.esprit.devops_project.entities.Product;
 
 class InvoiceDetailTest {
+    @Test
+    void testDefaultConstructor() {
+        InvoiceDetail invoiceDetail = new InvoiceDetail();
+        assertNotNull(invoiceDetail);
+    }
 
+    @Test
+    void testAllArgsConstructor() {
+        Long id = 1L;
+        int quantity = 5;
+        float price = 100.0f;
+        Product product = new Product();
+        InvoiceDetail invoiceDetail = new InvoiceDetail(id, quantity, price, product);
+
+        assertEquals(id, invoiceDetail.getIdInvoiceDetail());
+        assertEquals(quantity, invoiceDetail.getQuantity());
+        assertEquals(price, invoiceDetail.getPrice());
+        assertEquals(product, invoiceDetail.getProduct());
+    }
+
+    @Test
+    void testConstructorWithoutIdInvoiceDetail() {
+        int quantity = 5;
+        float price = 100.0f;
+        Product product = new Product();
+        InvoiceDetail invoiceDetail = new InvoiceDetail(quantity, price, product);
+
+        assertEquals(quantity, invoiceDetail.getQuantity());
+        assertEquals(price, invoiceDetail.getPrice());
+        assertEquals(product, invoiceDetail.getProduct());
+    }
     @Test
     void testGetIdInvoiceDetail() {
         InvoiceDetail invoiceDetail = new InvoiceDetail();
