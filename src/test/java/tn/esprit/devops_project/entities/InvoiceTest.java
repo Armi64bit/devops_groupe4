@@ -1,38 +1,135 @@
 package tn.esprit.devops_project.entities;
-
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import tn.esprit.devops_project.entities.Invoice;
+import tn.esprit.devops_project.entities.InvoiceDetail;
+import tn.esprit.devops_project.entities.Supplier;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 class InvoiceTest {
+    private Invoice invoice;
+
+    @BeforeEach
+    void setUp() {
+        invoice = new Invoice();
+    }
 
     @Test
-    void gettersAndSetters() {
-        // Create a mocked Invoice object
-        Invoice invoice = mock(Invoice.class);
+    void getIdInvoice() {
+        Long id = 1L;
+        invoice.setIdInvoice(id);
+        assertEquals(id, invoice.getIdInvoice());
+    }
 
-        // Set up any necessary behavior for the mocked object
-        when(invoice.getIdInvoice()).thenReturn(1L);
-        when(invoice.getAmountDiscount()).thenReturn(10.0f);
-        when(invoice.getAmountInvoice()).thenReturn(100.0f);
-        // Similarly, set up behavior for other getters if needed
+    @Test
+    void getAmountDiscount() {
+        float amountDiscount = 50.0f;
+        invoice.setAmountDiscount(amountDiscount);
+        assertEquals(amountDiscount, invoice.getAmountDiscount(), 0.01);
+    }
 
-        // Test the getters
-        assertEquals(1L, invoice.getIdInvoice());
-        assertEquals(10.0f, invoice.getAmountDiscount());
-        assertEquals(100.0f, invoice.getAmountInvoice());
-        // Similarly, test other getters if needed
+    @Test
+    void getAmountInvoice() {
+        float amountInvoice = 100.0f;
+        invoice.setAmountInvoice(amountInvoice);
+        assertEquals(amountInvoice, invoice.getAmountInvoice(), 0.01);
+    }
 
-        // Test the setters
-        invoice.setIdInvoice(2L);
-        invoice.setAmountDiscount(20.0f);
-        invoice.setAmountInvoice(200.0f);
-        // Similarly, test other setters if needed
+    @Test
+    void getDateCreationInvoice() {
+        Date date = new Date();
+        invoice.setDateCreationInvoice(date);
+        assertEquals(date, invoice.getDateCreationInvoice());
+    }
 
-        // Verify that the setters were called with the correct arguments
-        verify(invoice).setIdInvoice(2L);
-        verify(invoice).setAmountDiscount(20.0f);
-        verify(invoice).setAmountInvoice(200.0f);
-        // Similarly, verify other setters if needed
+    @Test
+    void getDateLastModificationInvoice() {
+        Date date = new Date();
+        invoice.setDateLastModificationInvoice(date);
+        assertEquals(date, invoice.getDateLastModificationInvoice());
+    }
+
+    @Test
+    void getArchived() {
+        boolean archived = true;
+        invoice.setArchived(archived);
+        assertTrue(invoice.getArchived());
+    }
+
+    @Test
+    void getInvoiceDetails() {
+        Set<InvoiceDetail> details = new HashSet<>();
+        InvoiceDetail detail = new InvoiceDetail();
+        details.add(detail);
+        invoice.setInvoiceDetails(details);
+        assertEquals(details, invoice.getInvoiceDetails());
+    }
+
+    @Test
+    void getSupplier() {
+        Supplier supplier = new Supplier();
+        invoice.setSupplier(supplier);
+        assertEquals(supplier, invoice.getSupplier());
+    }
+
+    @Test
+    void setIdInvoice() {
+        Long id = 1L;
+        invoice.setIdInvoice(id);
+        assertEquals(id, invoice.getIdInvoice());
+    }
+
+    @Test
+    void setAmountDiscount() {
+        float amountDiscount = 50.0f;
+        invoice.setAmountDiscount(amountDiscount);
+        assertEquals(amountDiscount, invoice.getAmountDiscount(), 0.01);
+    }
+
+    @Test
+    void setAmountInvoice() {
+        float amountInvoice = 100.0f;
+        invoice.setAmountInvoice(amountInvoice);
+        assertEquals(amountInvoice, invoice.getAmountInvoice(), 0.01);
+    }
+
+    @Test
+    void setDateCreationInvoice() {
+        Date date = new Date();
+        invoice.setDateCreationInvoice(date);
+        assertEquals(date, invoice.getDateCreationInvoice());
+    }
+
+    @Test
+    void setDateLastModificationInvoice() {
+        Date date = new Date();
+        invoice.setDateLastModificationInvoice(date);
+        assertEquals(date, invoice.getDateLastModificationInvoice());
+    }
+
+    @Test
+    void setArchived() {
+        boolean archived = true;
+        invoice.setArchived(archived);
+        assertTrue(invoice.getArchived());
+    }
+
+    @Test
+    void setInvoiceDetails() {
+        Set<InvoiceDetail> details = new HashSet<>();
+        InvoiceDetail detail = new InvoiceDetail();
+        details.add(detail);
+        invoice.setInvoiceDetails(details);
+        assertEquals(details, invoice.getInvoiceDetails());
+    }
+
+    @Test
+    void setSupplier() {
+        Supplier supplier = new Supplier();
+        invoice.setSupplier(supplier);
+        assertEquals(supplier, invoice.getSupplier());
     }
 }
