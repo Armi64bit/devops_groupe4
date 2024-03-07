@@ -30,4 +30,17 @@ public class InvoiceDetail implements Serializable {
 	@JsonIgnore
 	Invoice invoice;
 
+    public InvoiceDetail(Long id, int quantity, float price, Product product) {
+		this.setIdInvoiceDetail(id);
+		this.setPrice(price);
+		this.setProduct(product);
+		this.setQuantity(quantity);
+
+    }
+
+	public InvoiceDetail(int quantity, float price, Product product) {
+		this.setPrice(price);
+		this.setProduct(product);
+		this.setQuantity(quantity);
+	}
 }
