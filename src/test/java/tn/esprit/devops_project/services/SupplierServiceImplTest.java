@@ -17,7 +17,7 @@ import tn.esprit.devops_project.entities.Supplier;
 import tn.esprit.devops_project.repositories.SupplierRepository;
 import tn.esprit.devops_project.services.Iservices.ISupplierService;
 
-public class SupplierServiceImplTest {
+ class SupplierServiceImplTest {
 
     @InjectMocks
     private SupplierServiceImpl supplierService;
@@ -27,12 +27,12 @@ public class SupplierServiceImplTest {
 
 
     @BeforeEach
-    public void initMocks() {
+     void initMocks() {
         MockitoAnnotations.openMocks(this); // Initialize the mocks
     }
 
     @Test
-    public void testRetrieveAllSuppliers() {
+     void testRetrieveAllSuppliers() {
         // Mock the repository behavior
         List<Supplier> expectedSuppliers = new ArrayList<>();
         expectedSuppliers.add(new Supplier());
@@ -48,7 +48,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
-    public void testAddSupplier() {
+     void testAddSupplier() {
         // Create a new supplier
         Supplier newSupplier = new Supplier();
         newSupplier.setCode("S123");
@@ -67,7 +67,7 @@ public class SupplierServiceImplTest {
 
 
     @Test
-    public void testDeleteSupplier() {
+     void testDeleteSupplier() {
         // Mock the repository behavior
         Long supplierId = 1L;
         doNothing().when(supplierRepository).deleteById(supplierId);
@@ -80,7 +80,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
-    public void testRetrieveSupplier() {
+     void testRetrieveSupplier() {
         // Create an existing supplier
         Supplier existingSupplier = new Supplier();
         existingSupplier.setIdSupplier(1L);
@@ -99,7 +99,7 @@ public class SupplierServiceImplTest {
     }
 
     @Test
-    public void testRetrieveSupplier_NotFound() {
+     void testRetrieveSupplier_NotFound() {
         // Mock the repository behavior to return empty optional
         Long supplierId = 10L;
         when(supplierRepository.findById(supplierId)).thenReturn(Optional.empty());

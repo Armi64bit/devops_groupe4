@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class StockServiceImplTest {
+ class StockServiceImplTest {
 
     @Mock
     private StockRepository stockRepository;
@@ -23,12 +23,12 @@ public class StockServiceImplTest {
     private StockServiceImpl stockService;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void addStock() {
+     void addStock() {
         Stock stockToAdd = new Stock();
         stockToAdd.setIdStock(1);
         stockToAdd.setTitle("test");
@@ -41,7 +41,7 @@ public class StockServiceImplTest {
     }
 
     @Test
-    public void retrieveStock() {
+     void retrieveStock() {
         Long stockId = 1L; // Provide a valid stock id
         Stock expectedStock = new Stock(/* provide necessary arguments for expected Stock object */);
         when(stockRepository.findById(stockId)).thenReturn(java.util.Optional.of(expectedStock));
@@ -50,7 +50,7 @@ public class StockServiceImplTest {
     }
 
     @Test
-    public void retrieveAllStock() {
+     void retrieveAllStock() {
         List<Stock> expectedStockList = new ArrayList<>();
         // Add some dummy stock objects to the expected list
         when(stockRepository.findAll()).thenReturn(expectedStockList);
