@@ -12,8 +12,7 @@ import tn.esprit.devopsproject.repositories.OperatorRepository;
 import tn.esprit.devopsproject.repositories.SupplierRepository;
 import tn.esprit.devopsproject.services.Iservices.IInvoiceService;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -49,9 +48,13 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 	@Override
 	public List<Invoice> getInvoicesBySupplier(Long idSupplier) {
-		Supplier supplier = supplierRepository.findById(idSupplier).orElseThrow(() -> new NullPointerException("Supplier not found"));
-		return (List<Invoice>) supplier.getInvoices();
+		Supplier supplier = supplierRepository.findById(idSupplier)
+				.orElseThrow(() -> new NullPointerException("Supplier not found"));
+
+		Set<Invoice> invoices = supplier.getInvoices();
+		return invoices != null ? new ArrayList<>(invoices) : Collections.emptyList();
 	}
+
 
 	@Override
 	public void assignOperatorToInvoice(Long idOperator, Long idInvoice) {
