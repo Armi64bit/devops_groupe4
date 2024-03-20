@@ -105,9 +105,8 @@
     </build>
     <distributionManagement>
         <repository>
-
-            
             <id>deployementRepo</id>
+            <name>maven-releases</name>
             <url>http://172.17.0.2:8081/repository/maven-releases/ </url>
         </repository>
     </distributionManagement>
