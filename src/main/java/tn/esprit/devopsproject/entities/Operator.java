@@ -1,7 +1,6 @@
 package tn.esprit.devopsproject.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -21,7 +20,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Operator implements Serializable {
+public class Operator implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
