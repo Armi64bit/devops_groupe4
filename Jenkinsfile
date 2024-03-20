@@ -16,5 +16,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('MVN Sonarqube') {
+            steps {
+                // Execute 'mvn compile' command
+                sh 'analyzing  code ...'
+            }
+        }
     }
 }
