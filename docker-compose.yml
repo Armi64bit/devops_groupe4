@@ -1,0 +1,33 @@
+version: "3"
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:latest
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_USER:root
+      - MYSQL_PASSWORD:root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=BalkisDB
+    volumes:
+      - db_vol:/var/lib/mysqldb
+    networks:
+      - my_network
+
+  departement_app:
+    build: ./
+    image: balkis-devops
+    restart: unless-stopped
+    ports:
+      - 8089:8089
+    depends_on:
+      - mysqldb
+    networks:
+      - my_network
+
+networks:
+  my_network:
+volumes:
+  db_vol:
