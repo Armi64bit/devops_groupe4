@@ -8,8 +8,10 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.mockito.junit.jupiter.MockitoExtension;
-import tn.esprit.devops_project.entities.Operator;
-import tn.esprit.devops_project.repositories.OperatorRepository;
+import tn.esprit.devopsproject.entities.Operator;
+import tn.esprit.devopsproject.repositories.OperatorRepository;
+import tn.esprit.devopsproject.services.OperatorServiceImpl;
+
 
 import java.util.Arrays;
 import java.util.List;
