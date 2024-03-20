@@ -1,4 +1,5 @@
 FROM openjdk:11
-ADD target/DevOps_Project-2.1 project.jar
+WORKDIR /app
+COPY target/DevOps_Project-2.1.jar /app/
 EXPOSE 8089
 ENTRYPOINT ["java", "-jar", "project.jar"]
