@@ -1,4 +1,4 @@
-package tn.esprit.devops_project.services;
+package tn.esprit.devopsproject.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
