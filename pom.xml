@@ -35,6 +35,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>
+            <version>1.18.30</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -42,7 +43,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-uii -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
@@ -101,5 +102,11 @@
 
         </plugins>
     </build>
-
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>Nexus Repository</name>
+            <url>http://192.168.26.137:8081/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
 </project>

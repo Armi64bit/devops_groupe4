@@ -50,6 +50,11 @@ public class ProductServiceImplTest {
         verify(productRepository, times(1)).save(any());
     }
 
-    // Ajoutez ici vos autres méthodes de test pour ProductService en utilisant des comportements simulés pour les dépendances
+
+
+
+
+
+    // AAjoutez ici vos autres méthodes de test pour ProductService en utilisant des comportements simulés pour les dépendances
 }
 
