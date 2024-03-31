@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationStarter {
 
-    public void startApplication(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(DevOpsProjectSpringBootApplication.class, args);
-        // You can perform additional operations with the context if needed
+    public ConfigurableApplicationContext startApplication(String[] args) {
+        return SpringApplication.run(DevOpsProjectSpringBootApplication.class, args);
     }
 }
