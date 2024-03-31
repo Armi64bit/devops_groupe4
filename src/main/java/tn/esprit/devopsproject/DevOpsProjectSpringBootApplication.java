@@ -3,7 +3,6 @@ package tn.esprit.devopsproject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 public class DevOpsProjectSpringBootApplication {
@@ -12,12 +11,9 @@ public class DevOpsProjectSpringBootApplication {
         ConfigurableApplicationContext context = SpringApplication.run(DevOpsProjectSpringBootApplication.class, args);
         // You can perform additional operations with the context if needed
     }
-}
 
-@Component
-class ApplicationStarter {
-
-    public ConfigurableApplicationContext startApplication(String[] args) {
+    // Method to start the Spring Boot application
+    public static ConfigurableApplicationContext startApplication(String[] args) {
         return SpringApplication.run(DevOpsProjectSpringBootApplication.class, args);
     }
 }
