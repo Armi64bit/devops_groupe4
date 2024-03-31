@@ -1,9 +1,8 @@
 package tn.esprit.devopsproject;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"tn.esprit.devopsproject"})
+@SpringBootApplication
 public class DevOpsProjectSpringBootApplication {
 
     public static void main(String[] args) {
