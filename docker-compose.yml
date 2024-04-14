@@ -5,7 +5,6 @@ services:
     image: mysql:8.3.0
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=devops
     ports:
       - 3306:3306
@@ -20,9 +19,13 @@ services:
     ports:
       - 8082:8082
     environment:
-
-      command: --allow-public-key-retrieval=true
-
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/devops?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - ALLOW_PUBLIC_KEY_RETRIEVAL=true
     volumes:
       - .m2:/root/.m2
     stdin_open: true
