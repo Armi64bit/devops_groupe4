@@ -20,10 +20,11 @@ services:
     ports:
       - 8082:8082
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+
+      command: --allow-public-key-retrieval=true
+
     volumes:
       - .m2:/root/.m2
-      - ./src/main/resources:/app/src/main/resources
     stdin_open: true
     tty: true
 
