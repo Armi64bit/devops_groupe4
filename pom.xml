@@ -107,7 +107,7 @@
         <repository>
             <id>maven-releases</id>
             <name>Nexus Repository</name>
-            <url>http://172.17.0.3:8081/repository/maven-releases/</url>
+            <url>http://172.17.0.2:8081/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 
