@@ -26,6 +26,7 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - ALLOW_PUBLIC_KEY_RETRIEVAL=true
+      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=*
     volumes:
       - .m2:/root/.m2
     stdin_open: true
