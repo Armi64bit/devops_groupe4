@@ -2,7 +2,6 @@ package tn.esprit.devops_project.entities;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.devops_project.entities.Product;
 
 import javax.persistence.*;
 import java.io.Serializable;
