@@ -2,6 +2,7 @@ package tn.esprit.devops_project.entities;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import tn.esprit.devops_project.entities.Product;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,5 +20,9 @@ public class Stock implements Serializable {
     long idStock;
     String title;
     @OneToMany(mappedBy = "stock")
-    Set<Product> products;
+    private Set<Product> products;
+
+    public Stock(long i) {
+        this.idStock=i;
+    }
 }

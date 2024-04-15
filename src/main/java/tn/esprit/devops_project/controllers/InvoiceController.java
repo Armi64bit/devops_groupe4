@@ -15,7 +15,7 @@ public class InvoiceController {
 
     IInvoiceService invoiceService;
 
-    @GetMapping("/invoice")
+    @GetMapping("/project")
     public List<Invoice> getInvoices() {
        return invoiceService.retrieveAllInvoices();
     }
