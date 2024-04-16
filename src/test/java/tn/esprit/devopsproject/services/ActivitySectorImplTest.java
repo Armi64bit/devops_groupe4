@@ -1,13 +1,10 @@
 package tn.esprit.devopsproject.services;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.devopsproject.entities.ActivitySector;
 import tn.esprit.devopsproject.repositories.ActivitySectorRepository;
-import tn.esprit.devopsproject.repositories.ProductRepository;
-import tn.esprit.devopsproject.repositories.StockRepository;
 import tn.esprit.devopsproject.services.ActivitySectorImpl;
 
 import java.util.ArrayList;
@@ -16,13 +13,10 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
-
 @SpringBootTest
-
 class ActivitySectorImplTest {
 
     @Mock
@@ -33,10 +27,6 @@ class ActivitySectorImplTest {
 
     @Test
     void retrieveAllActivitySectors() {
-       // ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
-
-      //  ActivitySectorImpl activitySectorService = new ActivitySectorImpl();
-
         // Given
         List<ActivitySector> mockActivitySectors = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
