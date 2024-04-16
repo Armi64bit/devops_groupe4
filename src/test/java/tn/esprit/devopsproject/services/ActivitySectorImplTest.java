@@ -15,25 +15,23 @@ class ActivitySectorImplTest {
 
     @Test
     void retrieveAllActivitySectors() {
-        // Given
+
         ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
         ActivitySectorImpl activitySectorService = new ActivitySectorImpl(activitySectorRepository);
 
-        // Create a list of mock ActivitySector objects
+
         List<ActivitySector> mockActivitySectors = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
             ActivitySector mockActivitySector = new ActivitySector();
             mockActivitySector.setIdSecteurActivite((long) i); // Set necessary properties
             mockActivitySectors.add(mockActivitySector);
         }
+  when(activitySectorRepository.findAll()).thenReturn(mockActivitySectors);
 
-        // Set up the behavior of the activitySectorRepository mock to return the list of mockActivitySector objects
-        when(activitySectorRepository.findAll()).thenReturn(mockActivitySectors);
 
-        // When
         List<ActivitySector> retrievedActivitySectors = activitySectorService.retrieveAllActivitySectors();
 
-        // Then
+
         assertNotNull(retrievedActivitySectors);
         assertEquals(mockActivitySectors.size(), retrievedActivitySectors.size());
         for (int i = 0; i < mockActivitySectors.size(); i++) {
@@ -43,20 +41,69 @@ class ActivitySectorImplTest {
 
     @Test
     void addActivitySector() {
-        // Given
+
         ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
         ActivitySectorImpl activitySectorService = new ActivitySectorImpl(activitySectorRepository);
 
-        // Create a mock ActivitySector object
+
         ActivitySector mockActivitySector = new ActivitySector();
         mockActivitySector.setIdSecteurActivite(1L); // Set necessary properties
 
-        // When
+
         activitySectorService.addActivitySector(mockActivitySector);
 
-        // Then
+
         verify(activitySectorRepository, times(1)).save(mockActivitySector);
     }
 
-    // Similarly, you can implement tests for other methods like deleteActivitySector, updateActivitySector, and retrieveActivitySector.
+    @Test
+    void deleteActivitySector() {
+
+        ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
+        ActivitySectorImpl activitySectorService = new ActivitySectorImpl(activitySectorRepository);
+
+
+        activitySectorService.deleteActivitySector(1L);
+
+
+        verify(activitySectorRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    void updateActivitySector() {
+
+        ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
+        ActivitySectorImpl activitySectorService = new ActivitySectorImpl(activitySectorRepository);
+
+        ActivitySector mockActivitySector = new ActivitySector();
+        mockActivitySector.setIdSecteurActivite(1L); // Set necessary properties
+
+
+        when(activitySectorRepository.save(mockActivitySector)).thenReturn(mockActivitySector);
+        ActivitySector updatedActivitySector = activitySectorService.updateActivitySector(mockActivitySector);
+
+
+        assertNotNull(updatedActivitySector);
+        assertEquals(mockActivitySector.getIdSecteurActivite(), updatedActivitySector.getIdSecteurActivite());
+    }
+
+    @Test
+    void retrieveActivitySector() {
+
+     ActivitySectorRepository activitySectorRepository = mock(ActivitySectorRepository.class);
+        ActivitySectorImpl activitySectorService = new ActivitySectorImpl(activitySectorRepository);
+
+
+        ActivitySector mockActivitySector = new ActivitySector();
+        mockActivitySector.setIdSecteurActivite(1L); // Set necessary properties
+  when(activitySectorRepository.findById(1L)).thenReturn(Optional.of(mockActivitySector));
+
+
+        ActivitySector retrievedActivitySector = activitySectorService.retrieveActivitySector(1L);
+
+
+        assertNotNull(retrievedActivitySector);
+        assertEquals(mockActivitySector.getIdSecteurActivite(), retrievedActivitySector.getIdSecteurActivite());
+    }
+
 }
