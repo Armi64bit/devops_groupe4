@@ -1,5 +1,7 @@
-FROM openjdk:11
-WORKDIR /app
-COPY target/DevOps_Project-2.1.jar project.jar
-EXPOSE 8089
-ENTRYPOINT ["java", "-jar", "project.jar"]
+
+FROM openjdk:17-alpine
+RUN apk add --no-cache curl
+EXPOSE 8082
+RUN curl -o app.jar http://172.17.0.2:8081/repository/maven-releases/tn/esprit/DevOps_Project/2.1/DevOps_Project-2.1.jar
+WORKDIR /
+ENTRYPOINT ["java", "-jar", "app.jar"]
