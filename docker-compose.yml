@@ -12,7 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  app:
+  app: 
     depends_on:
       - mysqldb
     build: ./
